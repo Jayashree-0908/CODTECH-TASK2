@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; font-family: cursive;">WELCOME TO QUIZ</h1>
+        
+        <form id="quizForm">
+            <div class="question">
+                <p>1. What does HTML stand for?</p>
+                <label><input type="radio" name="question1" value="Hyperlinks and Text Markup Language"> Hyperlinks and Text Markup Language</label><br>
+                <label><input type="radio" name="question1" value="Hyper Text Markup Language"> Hyper Text Markup Language</label><br>
+                <label><input type="radio" name="question1" value="Home Tool Markup Language"> Home Tool Markup Language</label><br>
+                <label><input type="radio" name="question1" value="Hyper Text Markdown Language"> Hyper Text Markdown Language</label>
+            </div>
+
+            <div class="question">
+                <p>2. The <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> elements are used together to mark up a diagram or illustration with a caption.</p>
+                <label><input type="radio" name="question2" value="true"> True</label><br>
+                <label><input type="radio" name="question2" value="false"> False</label>
+            </div>
+
+            <div class="question">
+                <p>3. What attribute must be added to an HTML form element to submit form data to a specified URL?</p>
+                <label><input type="radio" name="question3" value="method"> method</label><br>
+                <label><input type="radio" name="question3" value="action"> action</label><br>
+                <label><input type="radio" name="question3" value="name"> name</label><br>
+                <label><input type="radio" name="question3" value="type"> type</label>
+            </div>
+
+            <div class="question">
+                <p>4. Which HTML element is used to embed a JavaScript file into a webpage?</p>
+                <label><input type="radio" name="question4" value="link"> link</label><br>
+                <label><input type="radio" name="question4" value="script"> script</label><br>
+                <label><input type="radio" name="question4" value="style"> style</label><br>
+                <label><input type="radio" name="question4" value="embed"> embed</label>
+            </div>
+
+            <div class="question">
+                <p>5. Which attribute is used to specify the URL of an external CSS file within an HTML document?</p>
+                <label><input type="radio" name="question5" value="link"> link</label><br>
+                <label><input type="radio" name="question5" value="rel"> rel</label><br>
+                <label><input type="radio" name="question5" value="src"> src</label><br>
+                <label><input type="radio" name="question5" value="href"> href</label>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Submit</button>
+        </form>
+        
+        <label for="score">Score:</label>
+        <input type="text" id="score" name="score" readonly>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const quizForm = document.getElementById('quizForm');
+            let score = 0;
+            const totalQuestions = 5;
+
+            // Check each question's answer, ensure a value is selected before checking
+            if (quizForm.elements['question1'].value === 'Hyper Text Markup Language') score++;
+            if (quizForm.elements['question2'].value === 'true') score++;
+            if (quizForm.elements['question3'].value === 'action') score++;
+            if (quizForm.elements['question4'].value === 'script') score++;
+            if (quizForm.elements['question5'].value === 'href') score++;
+
+            // Calculate percentage
+            const percentage = (score / totalQuestions) * 100;
+
+            // Display result in the score field
+            document.getElementById('score').value = percentage + '%';
+        }
+    </script>
+</body>
+</html>
